@@ -12,6 +12,7 @@ export default (options) => {
         loop: 'all',
         order: 'list',
         volume: 0.7,
+        speed: 1.0,
         listFolded: options.fixed,
         listMaxHeight: options.listmaxheight || 250,
         audio: options.music || [],

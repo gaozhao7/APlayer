@@ -13,6 +13,7 @@ import loading from '../assets/loading.svg';
 import right from '../assets/right.svg';
 import skip from '../assets/skip.svg';
 import lrc from '../assets/lrc.svg';
+import speed from '../assets/speed.svg';
 
 const Icons = {
     play: play,
@@ -30,6 +31,7 @@ const Icons = {
     right: right,
     skip: skip,
     lrc: lrc,
+    speed: speed,
 };
 
 export default Icons;

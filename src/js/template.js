@@ -56,6 +56,9 @@ class Template {
         this.skipForwardButton = this.container.querySelector('.aplayer-icon-forward');
         this.skipPlayButton = this.container.querySelector('.aplayer-icon-play');
         this.lrcButton = this.container.querySelector('.aplayer-icon-lrc');
+        this.speedButton = this.container.querySelector('.aplayer-icon-speed');
+        this.speedBar = this.container.querySelector('.aplayer-speed-bar');
+        this.speedItems = this.container.querySelectorAll('.aplayer-speed-item');
     }
 }
 

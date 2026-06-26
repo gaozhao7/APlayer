@@ -192,7 +192,8 @@ $aplayer-height-lrc: $aplayer-height + $lrc-height - 6;
 
     &.aplayer-arrow {
         .aplayer-icon-order,
-        .aplayer-icon-loop {
+        .aplayer-icon-loop,
+        .aplayer-speed-wrap {
             display: none;
         }
     }
@@ -486,6 +487,73 @@ $aplayer-height-lrc: $aplayer-height + $lrc-height - 6;
                             width: 5px;
                             transition: all 0.1s ease;
                         }
+                    }
+                }
+            }
+
+            .aplayer-speed-wrap {
+                position: relative;
+                display: inline-block;
+                margin: 0 5px;
+                cursor: pointer !important;
+
+                &:hover .aplayer-speed-bar-wrap {
+                    height: auto;
+                    padding: 8px 0;
+                    opacity: 1;
+                    visibility: visible;
+                }
+
+                .aplayer-icon-speed {
+                    margin: 0;
+                }
+
+                .aplayer-speed-bar-wrap {
+                    position: absolute;
+                    bottom: 20px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    z-index: 99;
+                    opacity: 0;
+                    visibility: hidden;
+                    transition: all .2s ease-in-out;
+
+                    &.aplayer-speed-bar-wrap-active {
+                        opacity: 1;
+                        visibility: visible;
+                    }
+
+                    .aplayer-speed-bar {
+                        background: #FFF;
+                        border-radius: 4px;
+                        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+                        overflow: hidden;
+
+                        .aplayer-speed-item {
+                            padding: 6px 16px;
+                            font-size: 12px;
+                            color: #666;
+                            white-space: nowrap;
+                            text-align: center;
+                            transition: all 0.2s ease;
+                            cursor: pointer;
+
+                            &:hover {
+                                background: #F5F5F5;
+                                color: #333;
+                            }
+
+                            &.aplayer-speed-item-active {
+                                font-weight: 600;
+                            }
+                        }
+                    }
+                }
+
+                &.aplayer-speed-wrap-active {
+                    .aplayer-speed-bar-wrap {
+                        opacity: 1;
+                        visibility: visible;
                     }
                 }
             }

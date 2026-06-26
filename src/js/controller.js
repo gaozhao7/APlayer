@@ -16,6 +16,7 @@ class Controller {
         this.initMiniSwitcher();
         this.initSkipButton();
         this.initLrcButton();
+        this.initSpeedButton();
     }
 
     initPlayButton() {
@@ -156,6 +157,37 @@ class Controller {
             } else {
                 this.player.template.lrcButton.classList.add('aplayer-icon-lrc-inactivity');
                 this.player.lrc && this.player.lrc.hide();
+            }
+        });
+    }
+
+    initSpeedButton() {
+        const speedBarWrap = this.player.template.speedButton.parentNode;
+
+        this.player.template.speedButton.addEventListener('click', () => {
+            speedBarWrap.classList.toggle('aplayer-speed-wrap-active');
+        });
+
+        for (let i = 0; i < this.player.template.speedItems.length; i++) {
+            this.player.template.speedItems[i].addEventListener('click', () => {
+                const speed = parseFloat(this.player.template.speedItems[i].textContent);
+                this.player.speed(speed);
+
+                // Update active state
+                for (let j = 0; j < this.player.template.speedItems.length; j++) {
+                    this.player.template.speedItems[j].classList.remove('aplayer-speed-item-active');
+                }
+                this.player.template.speedItems[i].classList.add('aplayer-speed-item-active');
+
+                // Close the speed bar
+                speedBarWrap.classList.remove('aplayer-speed-wrap-active');
+            });
+        }
+
+        // Close speed bar when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!speedBarWrap.contains(e.target)) {
+                speedBarWrap.classList.remove('aplayer-speed-wrap-active');
             }
         });
     }

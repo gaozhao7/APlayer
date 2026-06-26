@@ -1,0 +1,17 @@
+{
+    "permissions": {
+        "allow": [
+            "Bash(npm run *)",
+            "Bash(npm install *)",
+            "Bash(NODE_OPTIONS=--openssl-legacy-provider npm run *)",
+            "Bash(NODE_OPTIONS=--openssl-legacy-provider npx cross-env NODE_ENV=production npx webpack --config webpack/prod.config.js)",
+            "Bash(NODE_OPTIONS=--openssl-legacy-provider npx cross-env NODE_ENV=development npx webpack-dev-server --config webpack/dev.config.js --watch)",
+            "Bash(curl -s http://localhost:9090)",
+            "Bash(pkill -f webpack-dev-server)",
+            "Bash(curl -s http://localhost:8081)",
+            "Bash(npm uninstall *)",
+            "Bash(curl -s http://localhost:8081/APlayer.js)",
+            "Bash(open *)"
+        ]
+    }
+}

@@ -114,6 +114,7 @@ class APlayer {
         }
 
         this.volume(this.storage.get('volume'), true);
+        this.speed(this.storage.get('speed'), true);
     }
 
     bindEvents() {
@@ -367,6 +368,23 @@ class APlayer {
         }
 
         return this.audio.muted ? 0 : this.audio.volume;
+    }
+
+    /**
+     * Set playback speed
+     */
+    speed(rate, nostorage) {
+        rate = parseFloat(rate);
+        if (!isNaN(rate)) {
+            rate = Math.max(rate, 0.5);
+            rate = Math.min(rate, 2.0);
+            if (!nostorage) {
+                this.storage.set('speed', rate);
+            }
+            this.audio.playbackRate = rate;
+        }
+
+        return this.audio.playbackRate;
     }
 
     /**

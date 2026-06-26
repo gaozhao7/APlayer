@@ -57,6 +57,18 @@
                 <button type="button" class="aplayer-icon aplayer-icon-lrc">
                     {{@ icons.lrc }}
                 </button>
+                <div class="aplayer-speed-wrap">
+                    <button type="button" class="aplayer-icon aplayer-icon-speed">
+                        {{@ icons.speed }}
+                    </button>
+                    <div class="aplayer-speed-bar-wrap">
+                        <div class="aplayer-speed-bar">
+                            {{ each [0.5, 0.75, 1.0, 1.25, 1.5, 2.0] speed }}
+                            <div class="aplayer-speed-item {{ if options.speed === speed }}aplayer-speed-item-active{{ /if }}">{{ speed }}x</div>
+                            {{ /each }}
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -133,6 +145,18 @@
                 <button type="button" class="aplayer-icon aplayer-icon-lrc">
                     {{@ icons.lrc }}
                 </button>
+                <div class="aplayer-speed-wrap">
+                    <button type="button" class="aplayer-icon aplayer-icon-speed">
+                        {{@ icons.speed }}
+                    </button>
+                    <div class="aplayer-speed-bar-wrap">
+                        <div class="aplayer-speed-bar">
+                            {{ each [0.5, 0.75, 1.0, 1.25, 1.5, 2.0] speed }}
+                            <div class="aplayer-speed-item {{ if options.speed === speed }}aplayer-speed-item-active{{ /if }}">{{ speed }}x</div>
+                            {{ /each }}
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

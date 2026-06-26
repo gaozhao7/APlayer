@@ -9,6 +9,7 @@ class Storage {
             this.data = {};
         }
         this.data.volume = this.data.volume || player.options.volume;
+        this.data.speed = this.data.speed || player.options.speed;
     }
 
     get(key) {
