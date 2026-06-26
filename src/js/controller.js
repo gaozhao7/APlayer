@@ -146,14 +146,13 @@ class Controller {
         if (!this.player.template.closeButton) {
             return;
         }
-        this.player.template.closeButton.addEventListener('click', (e) => {
+        const hideHandler = (e) => {
             e.preventDefault();
             e.stopPropagation();
             this.player.hide();
-        });
-        this.player.template.closeButton.addEventListener(utils.nameMap.dragStart, (e) => {
-            e.stopPropagation();
-        });
+        };
+        this.player.template.closeButton.addEventListener('click', hideHandler);
+        this.player.template.closeButton.addEventListener(utils.nameMap.dragStart, hideHandler);
     }
 
     initDrag() {
