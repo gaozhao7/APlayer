@@ -441,6 +441,17 @@ class APlayer {
         }
     }
 
+    hide() {
+        this.pause();
+        this.container.classList.add('aplayer-hidden');
+        this.events.trigger('hide');
+    }
+
+    show() {
+        this.container.classList.remove('aplayer-hidden');
+        this.events.trigger('show');
+    }
+
     notice(text, time = 2000, opacity = 0.8) {
         this.template.notice.innerHTML = text;
         this.template.notice.style.opacity = opacity;

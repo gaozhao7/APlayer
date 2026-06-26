@@ -14,6 +14,8 @@ class Controller {
             this.initVolumeButton();
         }
         this.initMiniSwitcher();
+        this.initCloseButton();
+        this.initDrag();
         this.initSkipButton();
         this.initLrcButton();
         this.initSpeedButton();
@@ -21,7 +23,10 @@ class Controller {
 
     initPlayButton() {
         this.player.template.pic.addEventListener('click', () => {
-            this.player.toggle();
+            if (!this.dragged) {
+                this.player.toggle();
+            }
+            this.dragged = false;
         });
     }
 
@@ -134,6 +139,57 @@ class Controller {
     initMiniSwitcher() {
         this.player.template.miniSwitcher.addEventListener('click', () => {
             this.player.setMode(this.player.mode === 'mini' ? 'normal' : 'mini');
+        });
+    }
+
+    initCloseButton() {
+        if (!this.player.template.closeButton) {
+            return;
+        }
+        this.player.template.closeButton.addEventListener('click', (e) => {
+            e.stopPropagation();
+            this.player.hide();
+        });
+        this.player.template.closeButton.addEventListener(utils.nameMap.dragStart, (e) => {
+            e.stopPropagation();
+        });
+    }
+
+    initDrag() {
+        if (!this.player.options.fixed) {
+            return;
+        }
+        const pic = this.player.template.pic;
+        const body = this.player.template.body;
+        const list = this.player.template.list;
+        const lrcWrap = this.player.template.lrcWrap;
+
+        pic.addEventListener(utils.nameMap.dragStart, (e) => {
+            e.preventDefault();
+            const startY = e.clientY || e.touches[0].clientY;
+            const startBottom = parseInt(getComputedStyle(body).bottom, 10);
+
+            const moveHandler = (e2) => {
+                const currentY = e2.clientY || e2.touches[0].clientY;
+                const delta = startY - currentY;
+                if (Math.abs(delta) > 3) {
+                    this.dragged = true;
+                }
+                const newBottom = Math.min(window.innerHeight - 66, Math.max(0, startBottom + delta));
+                body.style.bottom = newBottom + 'px';
+                list.style.marginBottom = newBottom + 65 + 'px';
+                if (lrcWrap) {
+                    lrcWrap.style.bottom = newBottom + 10 + 'px';
+                }
+            };
+
+            const upHandler = () => {
+                document.removeEventListener(utils.nameMap.dragMove, moveHandler);
+                document.removeEventListener(utils.nameMap.dragEnd, upHandler);
+            };
+
+            document.addEventListener(utils.nameMap.dragMove, moveHandler);
+            document.addEventListener(utils.nameMap.dragEnd, upHandler);
         });
     }
 

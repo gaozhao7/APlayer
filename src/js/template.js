@@ -52,6 +52,7 @@ class Template {
         this.dtime = this.container.querySelector('.aplayer-dtime');
         this.notice = this.container.querySelector('.aplayer-notice');
         this.miniSwitcher = this.container.querySelector('.aplayer-miniswitcher');
+        this.closeButton = this.container.querySelector('.aplayer-close');
         this.skipBackButton = this.container.querySelector('.aplayer-icon-back');
         this.skipForwardButton = this.container.querySelector('.aplayer-icon-forward');
         this.skipPlayButton = this.container.querySelector('.aplayer-icon-play');
