@@ -24,6 +24,7 @@ class Template {
             icons: Icons,
             cover: cover,
             getObject: (obj) => obj,
+            speedOptions: [0.5, 0.75, 1.0, 1.25, 1.5, 2.0],
         });
 
         this.lrc = this.container.querySelector('.aplayer-lrc-contents');

@@ -63,7 +63,7 @@
                     </button>
                     <div class="aplayer-speed-bar-wrap">
                         <div class="aplayer-speed-bar">
-                            {{ each [0.5, 0.75, 1.0, 1.25, 1.5, 2.0] speed }}
+                            {{ each speedOptions speed }}
                             <div class="aplayer-speed-item {{ if options.speed === speed }}aplayer-speed-item-active{{ /if }}">{{ speed }}x</div>
                             {{ /each }}
                         </div>
@@ -152,7 +152,7 @@
                     </button>
                     <div class="aplayer-speed-bar-wrap">
                         <div class="aplayer-speed-bar">
-                            {{ each [0.5, 0.75, 1.0, 1.25, 1.5, 2.0] speed }}
+                            {{ each speedOptions speed }}
                             <div class="aplayer-speed-item {{ if options.speed === speed }}aplayer-speed-item-active{{ /if }}">{{ speed }}x</div>
                             {{ /each }}
                         </div>

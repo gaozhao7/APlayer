@@ -8,7 +8,7 @@ const ap1 = new APlayer({
     audio: [{
         name: '光るなら',
         artist: 'Goose house',
-        url: 'https://cn-south-17-aplayer-46154810.oss.dogecdn.com/hikarunara.mp3',
+        url: 'https://cdn.plyr.io/static/demo/Kishi_Bashi_-_It_All_Began_With_a_Burst.mp3',
         cover: 'https://cn-south-17-aplayer-46154810.oss.dogecdn.com/hikarunara.jpg',
         theme: '#ebd0c2'
     }]
@@ -206,10 +206,12 @@ const ap8 = new APlayer({
     order: 'random',
     lrcType: 3,
     fixed: true,
-});
-$.ajax({
-    url: 'https://api.i-meto.com/meting/api?server=netease&type=playlist&id=35798529',
-    success: function (list) {
-        ap8.list.add(JSON.parse(list));
-    }
+    audio: [{
+        name: '光るなら',
+        artist: 'Goose house',
+        url: 'https://cdn.plyr.io/static/demo/Kishi_Bashi_-_It_All_Began_With_a_Burst.mp3',
+        cover: 'https://cn-south-17-aplayer-46154810.oss.dogecdn.com/hikarunara.jpg',
+        lrc: 'https://cn-south-17-aplayer-46154810.oss.dogecdn.com/hikarunara.lrc',
+        theme: '#ebd0c2'
+    }]
 });

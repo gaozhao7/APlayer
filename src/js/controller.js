@@ -147,6 +147,7 @@ class Controller {
             return;
         }
         this.player.template.closeButton.addEventListener('click', (e) => {
+            e.preventDefault();
             e.stopPropagation();
             this.player.hide();
         });
@@ -220,7 +221,9 @@ class Controller {
     initSpeedButton() {
         const speedBarWrap = this.player.template.speedButton.parentNode;
 
-        this.player.template.speedButton.addEventListener('click', () => {
+        this.player.template.speedButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
             speedBarWrap.classList.toggle('aplayer-speed-wrap-active');
         });
 
